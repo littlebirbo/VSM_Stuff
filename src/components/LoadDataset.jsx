@@ -29,13 +29,10 @@ export default function LoadDataset({ setDataLoaded }) {
       progress: 0,
       message: "Initiatializing the loading process",
     });
-    console.log(maxDocuments);
     worker.postMessage({ action: "load", file, maxDocuments, forced: true });
 
     worker.onmessage = async (e) => {
       const { action } = e.data;
-
-      console.log(e.data);
 
       switch (action) {
         case "loaded": {
@@ -159,10 +156,6 @@ export default function LoadDataset({ setDataLoaded }) {
       setWarningTextColor("var(--fatal-error-color)");
     }
   }, [maxDocuments]);
-
-  useEffect(() => {
-    console.log(isAlreadyLoaded);
-  }, [isAlreadyLoaded]);
 
   return (
     <>
