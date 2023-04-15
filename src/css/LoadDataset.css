@@ -1,0 +1,69 @@
+/*
+Initial Page
+*/
+.vsm-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color-o-75);
+  color: white;
+  z-index: 100;
+  animation: fade-in 0.5s ease-in-out;
+}
+
+.vsm-loading-progress-bar {
+  width: 100%;
+  max-width: 300px;
+}
+
+.vsm-loading .lottie {
+  max-width: 400px;
+}
+.vsm-load-dataset-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+}
+.vsm-load-dataset-container h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 80px auto 30px auto;
+}
+.vsm-load-dataset-container h1 a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+.vsm-load-dataset-container p {
+  font-size: 1.5rem;
+  text-align: center;
+  max-width: 70%;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 1);
+  margin: 0 auto;
+  transition: all 0.5s;
+}
+@keyframes vsm-load-dataset-warning-animation {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}

@@ -1,0 +1,32 @@
+/* 
+PRELOAD
+ */
+.vsm-load-preload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  margin: 10px 0;
+  border-top: 1px solid var(--accent-color-o-25);
+  border-bottom: 1px solid var(--accent-color-o-25);
+}
+.vsm-load-check-preload {
+  width: 100%;
+  padding: 10px 0;
+  margin: 20px 0;
+  border-top: 1px solid var(--accent-color-o-25);
+  border-bottom: 1px solid var(--accent-color-o-25);
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all 250ms;
+}
+.vsm-load-preload .vsm-load-preload-button {
+  margin: 20px 0 10px 0;
+}
+.vsm-load-controls p {
+  color: var(--white-color);
+}

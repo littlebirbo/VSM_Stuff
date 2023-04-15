@@ -1,0 +1,134 @@
+@font-face {
+  font-family: JosefinSans;
+  src: url(../fonts/JosefinSans-VariableFont_wght.ttf);
+}
+
+:root {
+  font-family: JosefinSans, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --primary-color: #034364;
+  --primary-color-o-25: #0343645e;
+
+  --secondary-color: #11597e;
+  --secondary-color-hover: #0f4d6e;
+  --secondary-color-dark: #0a3b55;
+  
+  --accent-color: #bdf9ff;
+  --accent-color-o-25: #bdf9ff5e;
+  --accent-color-o-50: #bdf9ff8a;
+
+  --white-color: #ebf0f3;
+
+  --warning-color: #f1db93;
+
+  --error-color: #f06262;
+
+  --fatal-error-color: #c90606;
+
+  --background-color: #061a31;
+  --background-color-o-25: #061a315e;
+  --background-color-o-50: #061a318a;
+  --background-color-o-75: #061a31b3;
+
+  /* Scrollbar Colors */
+  --scrollbar-track-color: var(--primary-color);
+  --scrollbar-thumb-color: var(--secondary-color);
+  --scrollbar-thumb-color-hover: var(--secondary-color-hover);
+  --scrollbar-thumb-color-active: var(--secondary-color-dark);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Define the style for the scrollbar track and thumb in Firefox */
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color); /* Set the colors for the scrollbar thumb and track in Firefox */
+  scrollbar-width: thin; /* Set the width of the scrollbar in Firefox */
+}
+
+a{
+  text-decoration: none;
+}
+
+/* Define the style for the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Define the style for the scrollbar track */
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+}
+
+/* Define the style for the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: var(
+    --scrollbar-thumb-color
+  ); /* Set the background color of the thumb */
+  border-radius: 5px; /* Add rounded corners to the thumb */
+}
+
+/* Define the style for the scrollbar thumb when hovered */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(
+    --scrollbar-thumb-color-hover
+  ); /* Set the background color of the thumb on hover */
+}
+
+/* Define the style for the scrollbar thumb when dragged */
+::-webkit-scrollbar-thumb:active {
+  background-color: var(
+    --scrollbar-thumb-color-active
+  ); /* Set the background color of the thumb when dragged */
+}
+
+/* Define the style for the scrollbar track in Firefox */
+::-moz-scrollbar-track {
+  background-color: var(
+    --scrollbar-track-color
+  ); /* Set the background color of the track in Firefox */
+}
+
+/* Define the style for the scrollbar thumb in Firefox */
+::-moz-scrollbar-thumb {
+  background-color: var(
+    --scrollbar-thumb-color
+  ); /* Set the background color of the thumb in Firefox */
+  border-radius: 5px; /* Add rounded corners to the thumb in Firefox */
+}
+
+/* Define the style for the scrollbar thumb when hovered in Firefox */
+::-moz-scrollbar-thumb:hover {
+  background-color: var(
+    --scrollbar-thumb-color-hover
+  ); /* Set the background color of the thumb on hover in Firefox */
+}
+
+/* Define the style for the scrollbar thumb when dragged in Firefox */
+::-moz-scrollbar-thumb:active {
+  background-color: var(
+    --scrollbar-thumb-color-active
+  ); /* Set the background color of the thumb when dragged in Firefox */
+}
+
+/* Define the style for the scrollbar corner in Firefox */
+::-moz-scrollbar-corner {
+  background-color: var(
+    --scrollbar-track-color
+  ); /* Set the background color of the corner in Firefox */
+}
