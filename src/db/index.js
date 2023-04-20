@@ -1,6 +1,6 @@
 const openDB = () => {
     return new Promise((resolve, reject) => {
-        const request = window.indexedDB.open('myDatabase', 2); // 'myDatabase' is the name of the database, and 1 is the version number
+        const request = window.indexedDB.open('myDatabase', 2);
 
         request.onupgradeneeded = event => {
             const db = event.target.result;

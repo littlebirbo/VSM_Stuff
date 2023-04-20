@@ -12,8 +12,7 @@ const addDocument = (docId, docTitle, content, tags, title, thumbnail) => {
     let tokenArray = trimmedContent.split(" ");
     let docContent = [];
 
-    for (let i = 0; i < tokenArray.length; i++) {
-
+    for (let i = 0; i < tokenArray.length - 1; i++) {
         if (stopWords.includes(tokenArray[i])) {
             continue;
         }
@@ -162,7 +161,8 @@ const search = (query) => {
                 continue;
             }
             let currentWord = tokenArray[i];
-            let tf_qi = index[currentWord]["documents"]["query"] ? index[currentWord]["documents"]["query"] : 1;
+            let tf_qi = index[currentWord]["documents"]["query"] ? index[currentWord]["documents"]["query"] : 0;
+            if(tf_qi === 0) continue;
             let df_i = index[currentWord]["df"];
 
             let w_qi = calculateQueryWeight_BM25(tf_qi, df_i, "query");
@@ -311,7 +311,6 @@ const loadDocuments = (filename, limit = 0) => {
 
             // Resolve the promise when the last iteration is done
             if (i == apps.length - 1) {
-
                 resolve({
                     index,
                     documentInfo,
@@ -377,6 +376,8 @@ self.onmessage = async (message) => {
                             message: "Searched",
                             similarities,
                         });
+
+                        console.log(similarities);
                     }, 500);
                 });
             break;
