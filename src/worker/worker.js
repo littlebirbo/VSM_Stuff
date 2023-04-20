@@ -5,14 +5,14 @@ let stopWords = [];
 let similarities = [];
 
 const addDocument = (docId, docTitle, content, tags, title, thumbnail) => {
-    const strinifiedTags = JSON.stringify(tags);
+    const strinifiedTags = tags ? JSON.stringify(tags) : "";
     const trimmedTitle = title ? title.toString().replace(/\p{P}/gu, " ").replace(/\s+/gu, " ").trim().toLowerCase() : "";
     const trimmedContent = (content + " " + trimmedTitle + " " + strinifiedTags).replace(/\p{P}/gu, " ").replace(/\s+/gu, " ").trim().toLowerCase();
 
     let tokenArray = trimmedContent.split(" ");
     let docContent = [];
 
-    for (let i = 0; i < tokenArray.length - 1; i++) {
+    for (let i = 0; i < tokenArray.length; i++) {
         if (stopWords.includes(tokenArray[i])) {
             continue;
         }
