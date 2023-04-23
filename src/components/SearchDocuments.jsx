@@ -11,16 +11,16 @@ import searchDocuments from "../lotties/scan-similarities.json";
 let worker = new Worker("./src/worker/worker.js");
 
 export default function SearchDocuments({ setDataLoaded }) {
-//   const [query, setQuery] = useState(
-// `Example Query:
-// Title: Escape Dead Island
+  const [query, setQuery] = useState(
+`Example Query:
+Title: Escape Dead Island
 
-// Description: Escape Dead Island is a Survival-Mystery adventure that lets players delve into the Dead Island universe and unravel the origins of the zombie outbreak.
+Description: Escape Dead Island is a Survival-Mystery adventure that lets players delve into the Dead Island universe and unravel the origins of the zombie outbreak.
 
-// Tags: "Zombies", "Adventure", "Survival", "Action", "Third Person", "Open World", "Gore", "Horror", "Singleplayer", "Multiplayer", "Cartoony", "Hack and Slash", "Stealth", "Co-op", "Atmospheric", "Survival Horror", "Third-Person Shooter", "Anime"
-// `
-//   );
-  const [query, setQuery] = useState("Escape Dead Island");
+Tags: "Zombies", "Adventure", "Survival", "Action", "Third Person", "Open World", "Gore", "Horror", "Singleplayer", "Multiplayer", "Cartoony", "Hack and Slash", "Stealth", "Co-op", "Atmospheric", "Survival Horror", "Third-Person Shooter", "Anime"
+`
+  );
+  // const [query, setQuery] = useState("Escape Dead Island");
   const [similarities, setSimilarities] = useState([]);
   const [searchProgress, setSearchProgress] = useState({
     state: false,
