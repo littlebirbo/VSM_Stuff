@@ -8,7 +8,6 @@ const addDocument = (docId, docTitle, content, tags, title, thumbnail) => {
     const strinifiedTags = tags ? JSON.stringify(tags) : "";
     const trimmedTitle = title ? title.toString().replace(/\p{P}/gu, " ").replace(/\s+/gu, " ").trim().toLowerCase() : "";
     const trimmedContent = (content + " " + trimmedTitle + " " + strinifiedTags).replace(/\p{P}/gu, " ").replace(/\s+/gu, " ").trim().toLowerCase();
-
     let tokenArray = trimmedContent.split(" ");
     let docContent = [];
 
@@ -133,7 +132,7 @@ const calculateSimilarities = ({
 };
 
 const search = (query) => {
-    similarities = [];
+    similarities = {};
     // Remove the query document from the index only if it exists
     removeDocument("query");
 
@@ -147,6 +146,7 @@ const search = (query) => {
         let documentLen = [];
 
         tokenArray = [...new Set(tokenArray)];
+        // tokenArray = [...tokenArray];
 
         for (let i = 0; i < tokenArray.length; i++) {
             if (stopWords.includes(tokenArray[i])) {
@@ -165,9 +165,10 @@ const search = (query) => {
             if(tf_qi === 0) continue;
             let df_i = index[currentWord]["df"];
 
-            let w_qi = calculateQueryWeight_BM25(tf_qi, df_i, "query");
+            let w_qi = calculateDocumentWeight_BM25(tf_qi, df_i, "query");
 
             queryLen = queryLen + w_qi * w_qi;
+
             let indexCounter = 0;
             for (let docId_j in index[currentWord]["documents"]) {
                 if (indexCounter % 100 === 0) {
@@ -209,35 +210,10 @@ const calculateDocumentLength = (docId) => {
     for (let i = 0; i < wordArray.length; i++) {
         const tf = index[wordArray[i]]["documents"][docId];
         const df = index[wordArray[i]]["df"];
-        const w_i = calculateDocumentWeight_BM25(tf, df, docId);
-        sum += w_i * w_i;
+        const w_di = calculateDocumentWeight_BM25(tf, df, docId);
+        sum += w_di * w_di;
     }
     return Math.sqrt(sum);
-};
-
-const calculateQueryWeight = (tf_iq, df_i) => {
-    const tf = 1 + Math.log(tf_iq);
-    const idf = Math.log((Object.keys(documentInfo).length + 1) / df_i);
-    return tf * idf;
-};
-
-const calculateQueryWeight_BM25 = (tf_i, df_i, docId) => {
-    const k1 = 1.2;
-    const s = 0.2;
-    const docLen = documentInfo[docId]["content"].length;
-
-    const tf =
-        ((k1 + 1) * tf_i) /
-        (k1 * (1 - s + s * (docLen / averageDocLen)) + tf_i);
-    const idf = Math.log(1 + Object.keys(documentInfo).length / df_i);
-
-    return tf * idf;
-};
-
-const calculateDocumentWeight = (tf_ji, df_i) => {
-    const tf = 1 + Math.log(tf_ji);
-    const idf = Math.log((Object.keys(documentInfo).length + 1) / df_i);
-    return tf * idf;
 };
 
 const calculateDocumentWeight_BM25 = (tf_i, df_i, docId) => {
@@ -378,6 +354,10 @@ self.onmessage = async (message) => {
                         });
 
                         console.log(similarities);
+                        console.log(index);
+                        console.log(documentInfo);
+                        console.log(averageDocLen);
+                        console.log(stopWords);
                     }, 500);
                 });
             break;
